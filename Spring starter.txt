@@ -1,0 +1,52 @@
+//dependencies
+spring data
+spring dev
+mysql driver
+spring web
+spring security (for JWT)
+
+
+//Swagger config
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+
+@Configuration
+public class Swagger {
+	
+	@Bean
+	OpenAPI getOpenApi() {
+		Info info = new Info();
+		info.setTitle("LabOp Documentation Swagger");
+		OpenAPI api = new OpenAPI();
+		api.setInfo(info);
+		return api;
+	}
+
+}
+
+
+//pom dependency
+<!--https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+<dependency>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	<version>2.6.0</version>
+</dependency>
+
+
+//application.properties
+#DB Connection
+spring.datasource.url=jdbc:mysql://localhost:3306/hotelroom?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=
+
+#driver settings
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
+#tomcat port
+server.port=
+#hibernate ddl setting
+spring.jpa.hibernate.ddl-auto=update
